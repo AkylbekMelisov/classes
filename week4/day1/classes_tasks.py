@@ -11,12 +11,15 @@ class Planet:
         self.burger = False
 
     def set_humenity(self):
-        if self.humenity:
-            self.gumanity = False
+        if self.humanity:
+            self.humanity = False
             self.oxygen = False
         else:
             self.humanity = True
             self.oxygen = True
+
+
+
 
     def set_water(self):
         if self.size == 'middle' or self.size == 'great':
