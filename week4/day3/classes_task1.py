@@ -63,8 +63,9 @@ class Human:
                 elif car.speed > 20:
                     self.health -= 40
             else:
+                self.health = 0
                 self.is_live = False
-            print(f"{self.ful_name} попал в аварию, его сбила {car.name}")
+            print(f"{self.ful_name} попал в аварию, его сбила {car.name}, осталось здоровья {self.health}")
 
 
 
@@ -77,8 +78,8 @@ class Trafficlight:
         self.yellow = False
         self.green = False
 
-    def set_color(self,color):
-        if color == 'red':
+    def set_color(self,color:int):
+        if color % 2 == 1:
            self.red = True
            self.yellow = False
            self.green = False
@@ -86,7 +87,7 @@ class Trafficlight:
             self.yellow = True
             self.red = False
             self.green = False
-        elif color == 'green':
+        elif color % 2 == 0:
             self.green = True
             self.red = False
             self.yellow = False
@@ -107,21 +108,22 @@ class Trafficlight:
 audi = Car(name='AUDI',year=2021,color='grey',model='RX 8',is_crashed=False)
 bmv = Car(name='BMV',year=2020,color='red',model='X 5',is_crashed=False)
 honda = Car(name='HONDA',year=2020,color='red',model='X 5',is_crashed=False)
+bmv.speed = 50
 
 human1 = Human(ful_name='Bob',age=25,heigth=185,weigth=85,nation='france')
 
 traffic_light = Trafficlight()
-traffic_light.set_color('green')
-print(traffic_light.red,traffic_light.yellow,traffic_light.green)
+
+# print(traffic_light.red,traffic_light.yellow,traffic_light.green)
+for i in range(1,10):
+    if human1.health > 0:
+        traffic_light.set_color(i)
+        human1.accident(bmv,traffic_light)
 
 # audi.drive_to('Los-Angeles',1000)
 # audi.crash(another_car=honda)
-# # print(audi.is_crashed,bmv.is_crashed,honda.is_crashed)
+# print(audi.is_crashed,bmv.is_crashed,honda.is_crashed)
 
-
-bmv.speed = 50
-human1.health = 41
-human1.accident(bmv,traffic_light)
 print('Здоровье человека: ',human1.health,'\n','Жив ли человек: ',human1.is_live)
 
 
