@@ -30,7 +30,7 @@ class Car:
             self.fuel = 100
 
     def crash(self,another_car):
-        if self.position == another_car.position:
+        if self.position == another_car.position :
             self.is_crashed = True
             another_car.is_crashed = True
             print(f"{self.name} and {another_car.name} were crash!!!" )
@@ -58,6 +58,7 @@ class Human:
     def accident(self,car,trafficligt):
         if car.position == self.position and trafficligt.green:
             if self.health > 40:
+                car.is_crashed = True
                 if 5 < car.speed < 20:
                     self.health -= 20
                 elif car.speed > 20:
@@ -121,8 +122,8 @@ for i in range(1,10):
         human1.accident(bmv,traffic_light)
 
 # audi.drive_to('Los-Angeles',1000)
-# audi.crash(another_car=honda)
-# print(audi.is_crashed,bmv.is_crashed,honda.is_crashed)
+
+print(bmv.is_crashed)
 
 print('Здоровье человека: ',human1.health,'\n','Жив ли человек: ',human1.is_live)
 
