@@ -69,6 +69,17 @@ class Designer(Employee):
             print(picture)
 
 
+    def append_project(self,project):
+        if project not in self.portfolio:
+            self.portfolio.append(project)
+
+    def delete_project(self,project):
+        if project in self.portfolio:
+            self.portfolio.remove(project)
+
+
+
+
 
 emp1 = Employee(first='Maksim',last='Surovkin',email='maksim@gmail.com',salary=100)
 
@@ -79,14 +90,20 @@ dev1.total_amount()
 
 mng1 = Manager(first='Aigerim',last='Kashkarbekova',email='kashkarbekova@gmail.com',salary=10000,employers=['Nurjanat','Baiel','Aigerim'])
 mng1.total_amount()
-mng1.recruit('jarkynai')
+mng1.recruit('jarkynai\n')
 print(mng1.employers)
 
-mng1.delete_employer('Nurjanat')
+mng1.delete_employer('Nurjanat\n')
 print(mng1.employers)
 
 mng1.show_employers()
 
-dsg1 = Designer(first='Baiel',last='Nurmatbek uulu',email='baiel@gmail.com',salary=16000,portfolio=('youtobe','google','pycharm'))
+dsg1 = Designer(first='Baiel',last='Nurmatbek uulu',email='baiel@gmail.com',salary=16000,portfolio=['youtobe','google','pycharm'])
 dsg1.show_portfoplio()
 dsg1.total_amount()
+
+dsg1.append_project('facebook\n')
+dsg1.show_portfoplio()
+
+dsg1.delete_project('pycharm')
+dsg1.show_portfoplio()
